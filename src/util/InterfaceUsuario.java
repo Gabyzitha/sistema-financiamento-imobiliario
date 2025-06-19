@@ -1,7 +1,6 @@
 package util;
 
 import modelo.Financiamento;
-
 import java.util.Scanner;
 
 public class InterfaceUsuario {
@@ -22,10 +21,13 @@ public class InterfaceUsuario {
         do {
             entradaValida = true;
 
-            System.out.print("Digite o valor do imovel (Mínimo de 100.000,00): ");
+            System.out.print("Digite o valor do imóvel (Mínimo de $100.000,00): ");
             valorImovel = sc.nextDouble();
             if (valorImovel < 100000.00) {
-                System.out.println("Valor do imóvel abaixo do nível permitido! Por favor, digite novamente!");sc.nextLine();
+                System.out.println("\n===========================================================================");
+                System.out.println(   "⚠ Valor do imóvel abaixo do nível permitido! Por favor, digite novamente!");sc.nextLine();
+                System.out.println("============================================================================\n");
+
                 entradaValida = false;
             }
         }while (!entradaValida);
@@ -43,7 +45,10 @@ public class InterfaceUsuario {
             System.out.print("Digite o prazo de financiamento (mínimo 5 anos e máximo 35 anos): ");
             prazoFinanciamento = sc.nextInt();
             if (prazoFinanciamento < 5 || prazoFinanciamento > 35) {
-                System.out.println("Prazo de financiamento inválido, tente novamente!");
+                System.out.println("\n===================================================================");
+                System.out.println("       ⚠ Prazo de financiamento inválido, tente novamente!");
+                System.out.println("=================================================================\n");
+
                 entradaValida = false;
             }
         }while (!entradaValida);
@@ -60,7 +65,10 @@ public class InterfaceUsuario {
             System.out.print("Digite a taxa de juros anual (mínimo 8.5% e máximo 12.0%): ");
             taxaJurosAnual = sc.nextDouble();
             if (taxaJurosAnual < 8.5 || taxaJurosAnual > 12.0) {
-                System.out.println("Taxa de juros anual inálida, tente novamente!");
+                System.out.println("\n================================================================");
+                System.out.println("        ⚠ Taxa de juros anual inválida, tente novamente!");
+                System.out.println("=================================================================\n");
+
                 entradaValida = false;
             }
         }while (!entradaValida);

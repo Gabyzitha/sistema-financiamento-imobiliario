@@ -1,4 +1,5 @@
 package modelo;
+import java.text.DecimalFormat;
 
 public class Financiamento {
 
@@ -17,8 +18,6 @@ public class Financiamento {
     }
 
     // getters
-
-
     public double getValorImovel() {
         return valorImovel;
     }
@@ -32,7 +31,6 @@ public class Financiamento {
     }
 
 
-
     // metodos
     public double calcularPagamentoMensal(){
         return (this.valorImovel / (prazoFinanciamento * 12)) * (1 + taxaJurosAnual / 12);
@@ -43,19 +41,15 @@ public class Financiamento {
     }
 
     public String toString() {
-        return  "\n"
-                + "========== DADOS DO FINANCIAMENTO =========="
-                +"\n"
-                +"\n"
-                + "VALOR DO IMÓVEL: "
-                + valorImovel
-                +"\n"
-                +"VALOR TOTAL DO FINANCIAMENTO: "
-                + String.format("%.2f", totalPago())
-                +"\n"
-                +"PAGAMENTO MENSAL: "
-                + String.format("%.2f", calcularPagamentoMensal())
-                +"\n";
+
+        // formatador de números com 2 casas decimais e separador de milhares
+        DecimalFormat df = new DecimalFormat("#,##0.00");
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("VALOR DO IMÓVEL: $").append(df.format(this.valorImovel)).append("\n");
+        sb.append("VALOR TOTAL DO FINANCIAMENTO: $").append(df.format(totalPago())).append("\n");
+        sb.append("PAGAMENTO MENSAL: $").append(df.format(calcularPagamentoMensal())).append("\n");
+        return sb.toString();
 
     }
 }
