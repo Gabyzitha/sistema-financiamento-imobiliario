@@ -6,8 +6,8 @@ public class Financiamento {
     // atributos
 
     private double valorImovel;
-    private int prazoFinanciamento;
-    private double taxaJurosAnual;
+    protected int prazoFinanciamento;
+    protected double taxaJurosAnual;
     boolean entradaValida;
 
     // construtor
@@ -15,6 +15,9 @@ public class Financiamento {
         this.valorImovel = valorImovel;
         this.prazoFinanciamento = prazoFinanciamento;
         this.taxaJurosAnual = taxaJurosAnual;
+    }
+
+    public Financiamento() {
     }
 
     // getters

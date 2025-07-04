@@ -1,6 +1,10 @@
 package util;
 
+import modelo.Apartamento;
+import modelo.Casa;
 import modelo.Financiamento;
+import modelo.Terreno;
+
 import java.util.Scanner;
 
 public class InterfaceUsuario {
@@ -74,12 +78,45 @@ public class InterfaceUsuario {
         }while (!entradaValida);
 
     }
+    // método para criar o financiamento com base na opção do usuário
+    public Financiamento criarFinanciamentoEspecifico(){
+        char opcao;
+        boolean opcaoValida;
 
-    // método para retornar o objeto financiamento
-    public Financiamento criarFinanciamento(){
-        return new Financiamento(valorImovel, prazoFinanciamento, taxaJurosAnual);
+        do {
+            opcaoValida = true;
 
+            System.out.println("a- Casa");
+            System.out.println("b- Apartamento");
+            System.out.println("c- Terreno\n");
+            System.out.print("     Qual dessas opções desaja fazer um financiamento? ");
+            opcao = sc.next().charAt(0);
+            sc.nextLine();
+
+            if (opcao != 'a' && opcao != 'b' && opcao != 'c') {
+                System.out.println("\n================================================================");
+                System.out.println("      ⚠ Opção inválida. Por favor, escolha 'a', 'b' ou 'c'.");
+                System.out.println("=================================================================\n");
+                opcaoValida = false;
+            }
+        } while (!opcaoValida);
+
+        System.out.println();
+        obterValorImovel();
+        obterPrazoFinanciamento();
+        obterTaxaAnual();
+
+            if (opcao == 'a') {
+                return new Casa(this.valorImovel, this.prazoFinanciamento, this.taxaJurosAnual);
+            } else if (opcao == 'b') {
+                return new Apartamento(this.valorImovel, this.prazoFinanciamento, this.taxaJurosAnual);
+            } else {
+                return new Terreno(this.valorImovel, this.prazoFinanciamento, this.taxaJurosAnual);
+            }
     }
+
+
+
 }
 
 

@@ -1,6 +1,8 @@
 package main;
 
 import modelo.Financiamento;
+// Não precisa mais importar Casa, Apartamento, Terreno diretamente aqui
+// porque InterfaceUsuario já cuida da criação polimórfica
 import util.InterfaceUsuario;
 
 
@@ -23,21 +25,16 @@ public class Main {
         System.out.println("==================================================\n");
         System.out.print("    Quantos financiamentos você deseja fazer? ");
         int N = sc.nextInt();
-        System.out.println("\n=================================================");
+        sc.nextLine();
 
 
-        for(int i=0; i<N; i++){
-
-            // coleta os dados
+        for (int i = 0; i < N; i++) {
             System.out.println("\n          ★★★★★ [FINANCIAMENTO] #" + (i + 1) + " ★★★★★\n");
-            interfaceUsuario.obterValorImovel();
-            interfaceUsuario.obterPrazoFinanciamento();
-            interfaceUsuario.obterTaxaAnual();
 
-            // cria o objeto financiamento
-            Financiamento financ = interfaceUsuario.criarFinanciamento();
-            // add na listaFinanciamento
-            listaFinanciamento.add(financ);
+            Financiamento novoFinanc = interfaceUsuario.criarFinanciamentoEspecifico();
+
+            // Adiciona o objeto criado (seja Casa, Apartamento ou Terreno) à lista
+            listaFinanciamento.add(novoFinanc);
         }
 
         // exibe com o toString
@@ -60,17 +57,12 @@ public class Main {
         // Formatador para a saída dos totais
         DecimalFormat df = new DecimalFormat("#,##0.00");
 
+
         System.out.println("Total de todos os imóveis: $" + df.format(somaTotalImoveis));
         System.out.println("Total de todos os financiamentos: $" + df.format(somaTotalFinanciamento));
         System.out.println("\n------------------------------------------\n");
 
-
-
-
-
         sc.close();
 
     }
-
-
 }
